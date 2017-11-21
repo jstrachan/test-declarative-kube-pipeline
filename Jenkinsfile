@@ -8,12 +8,6 @@ pipeline {
         ttyEnabled true
         command 'cat'
       }
-      containerTemplate {
-        name 'node'
-        image 'node:9.2'
-        ttyEnabled true
-        command 'cat'
-      }
     }
   }
   environment {
@@ -25,9 +19,6 @@ pipeline {
         container("maven") {
           sh 'echo INSIDE_CONTAINER_ENV_VAR = ${CONTAINER_ENV_VAR}'
           sh 'mvn -version'        
-        }
-        container("node") {
-          sh 'npm -version'        
         }
       }
     }
